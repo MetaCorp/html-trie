@@ -1,5 +1,5 @@
 /**
- * html-trie v0.0.2
+ * html-trie v0.0.3
  * Copyright 2017 Léopold Szabatura
  * Released under the MIT License
  * https://github.com/MetaCorp/html-trie
@@ -13,12 +13,10 @@
     module.exports = factory();
   }
 }(this, function() {
-    var Trie = require('@metacorp/trie')
-    
     var config = {
     }
     
-    function htmlTrie (array) {
+    function htmlTrie (Trie, array) {
       this.trie = new Trie(array)
     }
     
@@ -49,7 +47,7 @@
     
     HtmlTrie.config = config
     
-    HtmlTrie.version = "0.0.2"
+    HtmlTrie.version = "0.0.3"
     
     return HtmlTrie;
 }));
