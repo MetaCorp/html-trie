@@ -11,10 +11,13 @@ htmlTrie.prototype.oninput = function (str) {
   const hits = this.trie.search(str || this.searchBox.value)
   var ret = ''
   console.log('hits: ', hits)
-  hits.forEach(hit => ret += `<div class="trie-hit">${hit}</div>`)
   this.hits.innerHtml = ''
+  hits.forEach(hit => {
+    const div = document.createElement('div')
+    div.innerHTML = `<div class="trie-hit">${hit}</div>`
+    this.hits.appendChild(div)
+  })
   console.log('ret: ', ret)
-  this.hits.appendChild(ret)
 }
 
 htmlTrie.prototype.searchBox = function (props) {
