@@ -7,16 +7,21 @@ function htmlTrie (array) {
   this.trie = new Trie(array)
 }
 
+htmlTrie.prototype.oninput = function (str) {
+  console.log('oninput: ', str || this.searchBox.value)
+  if (!this.hits) return
+  const hits = this.trie.search(str || this.searchBox.value)
+  var ret = ''
+  console.log('hits: ', hits)
+  hits.forEach(hit => ret += `<div class="trie-hit">${hit}</div>`)
+  this.hits.innerHtml = ''
+  console.log('ret: ', ret)
+  this.hits.appendChild(ret)
+}
+
 htmlTrie.prototype.searchBox = function (props) {
   this.searchBox = props.container
-  this.searchBox.oninput = () => {
-    if (!this.hits) return
-    const hits = this.trie.search(this.searchBox.value)
-    var ret = ''
-    hits.forEach(hit => ret += `<div class="trie-hit">${hit}</div>`)
-    this.hits.innerHtml = ''
-    this.hits.appendChild(ret)
-  } 
+  this.searchBox.oninput = () => this.oninput()
 }
 
 htmlTrie.prototype.hits = function (props) {
