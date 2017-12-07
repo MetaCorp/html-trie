@@ -6,18 +6,19 @@ function htmlTrie (Trie, array) {
 }
 
 htmlTrie.prototype.oninput = function (str) {
-  console.log('oninput: ', str || this.searchBox.value)
   if (!this.hits) return
+  if (str === '') {
+    this.hits.innerHTML = ''
+    return
+  }
   const hits = this.trie.search(str || this.searchBox.value)
   var ret = ''
-  console.log('hits: ', hits)
-  this.hits.innerHtml = ''
+  this.hits.innerHTML = ''
   hits.forEach(hit => {
     const div = document.createElement('div')
     div.innerHTML = `<div class="trie-hit">${hit}</div>`
     this.hits.appendChild(div)
   })
-  console.log('ret: ', ret)
 }
 
 htmlTrie.prototype.searchBox = function (props) {
