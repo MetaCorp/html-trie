@@ -1,6 +1,6 @@
 {
   "name": "@metacorp/html-trie",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Blazing fast, <1kb search library",
   "main": "dist/html-trie.min.js",
   "scripts": {
