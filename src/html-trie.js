@@ -1,9 +1,7 @@
-const Trie = require('@metacorp/trie')
-
 const config = {
 }
 
-function htmlTrie (array) {
+function htmlTrie (Trie, array) {
   this.trie = new Trie(array)
 }
 
