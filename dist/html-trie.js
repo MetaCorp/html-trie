@@ -1,5 +1,5 @@
 /**
- * html-trie v0.1.1
+ * html-trie v0.1.2
  * Copyright 2017 Léopold Szabatura
  * Released under the MIT License
  * https://github.com/MetaCorp/html-trie
@@ -57,7 +57,7 @@
     
     HtmlTrie.config = config
     
-    HtmlTrie.version = "0.1.1"
+    HtmlTrie.version = "0.1.2"
     
     return HtmlTrie;
 }));
