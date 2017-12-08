@@ -1,5 +1,4 @@
-# Trie
-
+# Html-Trie
 Html binding for [Trie](https://github.com/MetaCorp/trie)
 
 [![Build Status](https://travis-ci.org/MetaCorp/html-trie.svg?branch=master)](https://travis-ci.org/MetaCorp/html-trie)
