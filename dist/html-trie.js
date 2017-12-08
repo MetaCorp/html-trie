@@ -1,5 +1,5 @@
 /**
- * html-trie v0.0.5
+ * html-trie v0.1.0
  * Copyright 2017 Léopold Szabatura
  * Released under the MIT License
  * https://github.com/MetaCorp/html-trie
@@ -14,6 +14,7 @@
   }
 }(this, function() {
     var config = {
+      hitClassName: 'trie-hit'
     }
     
     function htmlTrie (Trie, array) {
@@ -29,20 +30,23 @@
         return
       }
       var hits = this.trie.search(str || this.searchBox.value)
-      var ret = ''
       this.hits.innerHTML = ''
-      hits.forEach(function (hit) {
+      for (var i = 0, l = hits.length; i < l; i++) {
         var div = document.createElement('div')
-        div.innerHTML = "<div class=\"trie-hit\">" + hit + "</div>"
+        div.className = config.className
+        div.innerHTML = hits[i]
         this$1.hits.appendChild(div)
-      })
+      }
     }
     
     htmlTrie.prototype.searchBox = function (props) {
       var this$1 = this;
     
       this.searchBox = props.container
-      this.searchBox.oninput = function () { return this$1.oninput(); }
+      this.searchBox.oninput = function () {
+        props.oninput && props.oninput()
+        this$1.oninput()
+      }
     }
     
     htmlTrie.prototype.hits = function (props) {
@@ -53,7 +57,7 @@
     
     HtmlTrie.config = config
     
-    HtmlTrie.version = "0.0.5"
+    HtmlTrie.version = "0.1.0"
     
     return HtmlTrie;
 }));

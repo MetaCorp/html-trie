@@ -17,7 +17,7 @@ htmlTrie.prototype.oninput = function (str) {
   for (var i = 0, l = hits.length; i < l; i++) {
     const div = document.createElement('div')
     div.className = config.className
-    div.innerHTML = hits[i]}
+    div.innerHTML = hits[i]
     this.hits.appendChild(div)
   }
 }
