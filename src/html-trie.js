@@ -1,4 +1,5 @@
 const config = {
+  hitClassName: 'trie-hit'
 }
 
 function htmlTrie (Trie, array) {
@@ -12,18 +13,21 @@ htmlTrie.prototype.oninput = function (str) {
     return
   }
   const hits = this.trie.search(str || this.searchBox.value)
-  var ret = ''
   this.hits.innerHTML = ''
-  hits.forEach(hit => {
+  for (var i = 0, l = hits.length; i < l; i++) {
     const div = document.createElement('div')
-    div.innerHTML = `<div class="trie-hit">${hit}</div>`
+    div.className = config.className
+    div.innerHTML = hits[i]}
     this.hits.appendChild(div)
-  })
+  }
 }
 
 htmlTrie.prototype.searchBox = function (props) {
   this.searchBox = props.container
-  this.searchBox.oninput = () => this.oninput()
+  this.searchBox.oninput = () => {
+    props.oninput && props.oninput()
+    this.oninput()
+  }
 }
 
 htmlTrie.prototype.hits = function (props) {
